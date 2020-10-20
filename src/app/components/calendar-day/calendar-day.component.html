@@ -1,0 +1,8 @@
+<div class="calendar-day-header"
+     [ngClass]="{'blue-date': dia.isToday}">
+    <strong>{{dia.date.getDate()}}</strong>
+    <strong *ngIf="dia.isToday || (i==0 && j==0) || (dia.date.getDate() == 1)">
+        {{mes}}
+    </strong>
+    <a (click)="openAdd()">+</a>
+</div>

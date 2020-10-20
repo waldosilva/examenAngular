@@ -1,0 +1,56 @@
+<h1 mat-dialog-title> {{ reminder != null ?'Editar':'Nuevo'}}
+</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Texto</mat-label>
+        <textarea matInput [(ngModel)]="texto" maxlength="30"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Ciudad</mat-label>
+        <mat-select [(ngModel)]="ciudad">
+            <mat-option *ngFor="let pais of paises" [value]="pais.codigo">
+                {{pais.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input matInput [(ngModel)]="fecha" />
+
+    </mat-form-field>
+    <h1>Color</h1>
+    <div class="row">
+
+
+
+        <button type="button"
+                (click)="color='azul'"
+                [ngClass]="{'btn-primary': color=='azul'
+                ,'btn-outline-primary': color!='azul' }"
+                class="btn">Azul</button>
+        <button type="button"
+                (click)="color='verde'"
+                [ngClass]="{'btn-success': color=='verde',
+                'btn-outline-success': color!='verde'}"
+                class="btn">Verde</button>
+        <button type="button"
+                (click)="color='rojo'"
+                [ngClass]="{'btn-danger': color=='rojo',
+                'btn-outline-danger': color!='rojo'}"
+                class="btn">Rojo</button>
+        <button type="button"
+                (click)="color='amarillo'"
+                [ngClass]="{'btn-warning': color=='amarillo',
+                'btn-outline-warning': color!='amarillo'}"
+                class="btn ">Amarillo</button>
+
+    </div>
+
+
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary"
+            (click)="guardarCambios()">Guardar</button>
+</div>

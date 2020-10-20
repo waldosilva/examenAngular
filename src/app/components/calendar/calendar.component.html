@@ -1,0 +1,29 @@
+<table class='calendar-table' *ngIf="calendar">
+    <thead>
+        <tr>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sabado</th>
+            <th>Domingo</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+            <td class="calendar-day"
+                [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}"
+                *ngFor="let c of row; let j = index">
+                <app-calendar-day [dia]="c" [mes]="meses[c.date.getMonth()]">
+                </app-calendar-day>
+                <app-reminder [dia]="c"
+                              *ngFor="let r of c.recordatorios"
+                              [reminder]="r"
+                              (valueChange)="valorSalida($event)">
+                </app-reminder>
+            </td>
+        </tr>
+    </tbody>
+</table>
